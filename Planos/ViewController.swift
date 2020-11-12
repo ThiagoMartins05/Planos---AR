@@ -28,5 +28,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         guard let planeAnchor = anchor as? ARPlaneAnchor else {return}
         print("new flat surface detected, new ARPlaneAnchor added")
     }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else {return}
+        print("new flat surface detected, new ARPlaneAnchor added")
+        print("updationg floor anchor")
+    }
 }
 
