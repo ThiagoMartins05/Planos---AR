@@ -20,7 +20,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.configuration.planeDetection = .horizontal
         self.sceneView.session.run(configuration)
         self.sceneView.delegate = self
+        
+        let lavaNode = createLava()
+        self.sceneView.scene.rootNode.addChildNode(lavaNode)
         // Do any additional setup after loading the view.
+    }
+    
+    func createLava() -> SCNNode{
+        let lavaNode = SCNNode(geometry: SCNPlane(width: 1, height: 1))
+        lavaNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "lava")
+        lavaNode.position = SCNVector3(0,0,-1)
+        
+        return lavaNode
     }
 
     //é chamado quando um novo plano horizontal é detectado
@@ -39,5 +50,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
         print("I made a mistake, and I am fixing it...")
     }
+}
+
+extension Int {
+    var degreesToRadians: Double { return Double(self) * .pi/180}
 }
 
