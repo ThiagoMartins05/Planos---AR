@@ -45,7 +45,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     //é chamado quando um plano é mudado - tamanho
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         guard let planeAnchor = anchor as? ARPlaneAnchor else {return}
+        node.enumerateChildNodes { (childNode, _) in
+            childNode.removeFromParentNode()
+            
+        }
         
+        let lavaNode = createLava(planeAnchor: planeAnchor)
+        node.addChildNode(lavaNode)
         print("updationg floor anchor")
     }
     // é chamado quando é criado mais de um anchor pro mesmo plano, é nesse momento que ele remove um deles e a ambiguidade é cancelada
