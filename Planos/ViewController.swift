@@ -57,6 +57,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // é chamado quando é criado mais de um anchor pro mesmo plano, é nesse momento que ele remove um deles e a ambiguidade é cancelada
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
         print("I made a mistake, and I am fixing it...")
+        
+        node.enumerateChildNodes { (childNode, _) in
+            childNode.removeFromParentNode()
+            
+        }
     }
 }
 
