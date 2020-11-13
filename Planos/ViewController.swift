@@ -17,12 +17,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.sceneView.debugOptions = [.showWorldOrigin, .showFeaturePoints]
-        self.configuration.planeDetection = .horizontal
+       // self.configuration.planeDetection = [.horizontal, .vertical] // permite detectar planos horizontais e verticasi
+        self.configuration.planeDetection = [.horizontal]
         self.sceneView.session.run(configuration)
-        self.sceneView.delegate = self
+        
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func add(_ sender: Any) {
+        self.sceneView.delegate = self
+        
+    }
+    @IBAction func remove(_ sender: Any) {
+        self.sceneView.delegate = nil
     }
     
     func createLava(planeAnchor: ARPlaneAnchor) -> SCNNode{
@@ -38,6 +47,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let planeAnchor = anchor as? ARPlaneAnchor else {return}
       //  print("new flat surface detected, new ARPlaneAnchor added")
+        
+        if planeAnchor.alignment == .horizontal{
+            print("horizontal")
+        }
+        if planeAnchor.alignment == .vertical{
+            print("vertical")
+        }
         let lavaNode = createLava(planeAnchor: planeAnchor)
         node.addChildNode(lavaNode)
     }

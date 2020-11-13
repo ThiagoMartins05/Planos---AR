@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,16 +18,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRs-E9-cuL">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="754"/>
                             </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtF-oy-OIF">
+                                <rect key="frame" x="207" y="798" width="207" height="64"/>
+                                <color key="backgroundColor" red="0.83216959239999999" green="0.98548370600000001" blue="0.47333085539999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="JEi-VO-Frb"/>
+                                </constraints>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="add:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0LM-UJ-maW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9h2-GZ-nSC">
+                                <rect key="frame" x="0.0" y="798" width="207" height="64"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="2FR-WD-1va"/>
+                                </constraints>
+                                <state key="normal" title="Stop"/>
+                                <connections>
+                                    <action selector="add:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ef3-ax-HKP"/>
+                                    <action selector="remove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8m3-nA-sEi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jtF-oy-OIF" secondAttribute="trailing" id="21t-Ry-fzI"/>
                             <constraint firstItem="sRs-E9-cuL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3iE-y1-lMU"/>
+                            <constraint firstItem="jtF-oy-OIF" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.5" id="C4A-yw-ULh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sRs-E9-cuL" secondAttribute="trailing" id="GZq-Go-UF1"/>
                             <constraint firstItem="sRs-E9-cuL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JVy-Xq-xbl"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sRs-E9-cuL" secondAttribute="bottom" id="jGf-rF-5EX"/>
+                            <constraint firstItem="9h2-GZ-nSC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Thj-BL-8Xd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jtF-oy-OIF" secondAttribute="bottom" id="a0a-sA-Pj4"/>
+                            <constraint firstItem="jtF-oy-OIF" firstAttribute="leading" relation="lessThanOrEqual" secondItem="9h2-GZ-nSC" secondAttribute="trailing" id="cGP-y0-M2c"/>
+                            <constraint firstItem="9h2-GZ-nSC" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.5" id="hdK-Ce-2Ma"/>
+                            <constraint firstItem="jtF-oy-OIF" firstAttribute="top" secondItem="sRs-E9-cuL" secondAttribute="bottom" id="jGf-rF-5EX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9h2-GZ-nSC" secondAttribute="bottom" id="ySB-f6-Oz2"/>
                         </constraints>
                     </view>
                     <connections>
